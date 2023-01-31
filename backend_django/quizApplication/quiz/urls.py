@@ -1,6 +1,6 @@
 from django.urls import path, include
 from quiz import views
-from quiz.routers import signup, signin
+from quiz.routers.auth import signup, signin
 
 urlpatterns = [
     path('', views.testViewSet, name='test'),
