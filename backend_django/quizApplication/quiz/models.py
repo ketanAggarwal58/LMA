@@ -20,7 +20,14 @@ class Quiz(models.Model):
     quizAnswer3 = models.CharField(max_length=256)
     quizAnswer4 = models.CharField(max_length=256)
     correctAnswer = models.CharField(max_length=256)
-    questionScore = models.IntegerField()
+    questionScore = models.CharField(max_length=256)
+
+
+class quizData(models.Model):
+    quizName = models.CharField(max_length=256)
+    quizMaxSocre = models.CharField(max_length=256)
+    quizCreater = models.CharField(max_length=256)
+    quizSubject = models.CharField(max_length=100)
 
 
 class quizSocre(models.Model):

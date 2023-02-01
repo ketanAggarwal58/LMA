@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.db import connections
 from rest_framework.parsers import JSONParser
-from quiz.serializers import signin
+from quiz.serializers.auth import signin
 import jwt
 
 
