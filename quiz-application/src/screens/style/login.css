@@ -1,0 +1,14 @@
+.login {
+  position: absolute;
+  top: 25%;
+  left: 38%;
+  transition: all 300ms ease;
+}
+
+.loginCard {
+  justify-content: center;
+  height: 22rem;
+  width: 22rem;
+  border-radius: 30px;
+  background-color: white;
+}
