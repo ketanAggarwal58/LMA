@@ -10,5 +10,6 @@ urlpatterns = [
     path('signin', signin.signInViewSet, name='Sign In'),
     path('quizuser', user.fetchUsers, name='Sign In'),
     path('quizdata', quizQuestions.quizFetchQuizName, name='Quiz Name'),
-    path('quizQuestion', quizQuestions.quizAddQuestions, name="Quiz Question Add")
+    path('quizdata/all', quizQuestions.quizFetchAllQuestions, name='Quiz Name'),
+    path('quiz-question', quizQuestions.quizAddQuestions, name="Quiz Question Add")
 ]

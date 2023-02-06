@@ -49,7 +49,7 @@ def quizScoreCalculation(quizName):
 def quizFetchQuizName(request):
     try:
         cursor1 = connections['default'].cursor()
-        sql = "SELECT quiz_quiz.id, quiz_quiz.quizName, quiz_quizscore.quizMaxScore FROM quiz_quiz INNER JOIN quiz_quizscore ON quiz_quiz.quizName = quiz_quizscore.quizName"
+        sql = "SELECT DISTINCT quiz_quiz.quizName, quiz_quizscore.quizMaxScore FROM quiz_quiz INNER JOIN quiz_quizscore ON quiz_quiz.quizName = quiz_quizscore.quizName ORDER BY quiz_quizscore.quizName"
         with cursor1 as cursor:
             cursor.execute(sql)
             object = dictfetchall(cursor)
@@ -72,6 +72,19 @@ def quizFetchQuestions(request):
                 cursor.execute(sql)
                 object = dictfetchall(cursor)
                 return Response(object)
+    except:
+        return Response({"msg": "Something went wrong!"})
+
+
+@api_view(['GET'])
+def quizFetchAllQuestions(request):
+    try:
+        cursor1 = connections['default'].cursor()
+        sql = "SELECT * FROM quiz_quiz"
+        with cursor1 as cursor:
+            cursor.execute(sql)
+            object = dictfetchall(cursor)
+            return Response(object)
     except:
         return Response({"msg": "Something went wrong!"})
 
