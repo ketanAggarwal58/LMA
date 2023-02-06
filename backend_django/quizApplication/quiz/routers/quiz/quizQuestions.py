@@ -44,14 +44,16 @@ def quizScoreCalculation(quizName):
 # For Admin User
 
 
+# returns quiz Name, Quiz Socre, id
+@api_view(['GET'])
 def quizFetchQuizName(request):
     try:
         cursor1 = connections['default'].cursor()
-        sql = "SELECT quiz_quiz.quizName, quiz_quizscore.quizMaxScore FROM quiz_quiz INNER JOIN quiz_quiz ON quiz_quiz.quizName=quiz_quizscore.quizName"
+        sql = "SELECT quiz_quiz.id, quiz_quiz.quizName, quiz_quizscore.quizMaxScore FROM quiz_quiz INNER JOIN quiz_quizscore ON quiz_quiz.quizName = quiz_quizscore.quizName"
         with cursor1 as cursor:
             cursor.execute(sql)
             object = dictfetchall(cursor)
-            return Response({"Quiz Data": object})
+        return Response(object)
     except:
         return Response({"msg": "Something went wrong!"})
 

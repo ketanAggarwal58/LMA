@@ -1,49 +1,59 @@
 # Quiz Application
 
-This is a basic Node Backend application which i have created this application holds the total of 8 APIs which have been created by the Ketan Aggarwal.
+The Quiz Application it is an application in which any user according to their role they can generate the Quizes. 
 
-The LMA folders holds backend_django application code as well but it is not completed due to the lack of time.
+The LMA folder holds two major folders and their details are listed down below:
 
+1. Backend_django 
+    The backend_django folder holds all the backend code.
+
+As the project requirements were not present and i don't remember the actual project requriments you may find the project incomplete.
+
+2. Quiz-Application
+    This folder holds the react [TypeScript] code base in which you will find an simple dashboard which is created in the reactjs with the help of typescript. 
+
+
+## Django Application
 In Django application i have used the Django Rest Framework which helps us to cut the boiler plate code.
 
-## Node JS Application
-
-After the Realisation that the time is very low and i have to also create the ReactJS Website as well so i decided to switch the project to NodeJS in between.
-
-The Node Application HOLDS the total of 8 APIs which are listed down below:
-
-1. post - http://localhost:8000/auth/login
-2. post - http://localhost:8000/auth/signup
-3. post - http://localhost:8000/quiz/new
-4. post- http://localhost:8000/quiz/test/<id>
-5. Patch - http://localhost:8000/quiz/test/<id>
-6. get -http://localhost:8000/quiz/test/<id>
-7. get - http://localhost:8000/quiz/test/score/<id>
-8. post - http://localhost:8000/quiz/test/score/<id>
-
-In the Creationn of the application i have used to the Relational Database - MySQL DB
-
-the Database is runned on the docker container and then connected with the application.
-
-.env file holds the confrigration of the application server and the configration of the database which helps to connect the DB with the NodeJS Application server.
+Note in the folder you may also find the docker file as my docker deamon causing some issue due to which i am not able to provide you an docker container.
 
 ### Packages Used in the Application Server
 
-1. bcryptjs - for encrypting the Password
-2. dotenv -  for the support of the Env file
-3. jsonwebtoken - For the Creatation of the JWT Tokens
-4. express - to reduce the boiler plate code in NodeJS
-5. jwt-decode - to Decode the JWT token
-6. MySQL2 - Client library to connect the DB with application server
+i have added an requirements.txt file which holds all the dependies with thier versions.
 
-Note - SQL files holds the query used to create the Databases and the tables in the MySQL database.
+major dependies used are listed down below:
+
+1. Django
+2. django rest framework
+3. django cors headers - for enabling the Cross origins Access for APIs;
+4. PyJWT - python Json web Tokens for generating and decoding the JWT tokens.
+5. and many more packages.
+
+**Note** - SQL files holds some of the queries which are tested and used in the database. 
 
 ## React Application
 
 Due to The shortage of time the Application is not completed and API integration is not done.
 
-the Login ID and Password is given down below:
-    Username: "delhi",
-    password: "pass123"
+the react dependies which i have used are:
+1. Matrial UI
+2. Google Fonts
 
-to enter into the React application.
+
+The Data in the table will be only visible when the backend sever will be running because in admin panel all the APIs are integrated.
+
+to install the dependendies use the following command in your terminal/command prompt
+
+```$ npm install```
+
+some sample shots of the React Application.
+
+HomePage
+![Home Page](./screenshots/Home.png)
+
+User Screen
+![User Screen](./screenshots/users.png)
+
+New Quiz Screen
+![User Screen](./screenshots/addquiz.png)

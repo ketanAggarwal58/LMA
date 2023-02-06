@@ -1,0 +1,17 @@
+.quiz {
+    position: absolute;
+    top: 20%;
+    left: 38%;
+    transition: all 300ms ease;
+  }
+  
+  .quizCard1 {
+    justify-content: center;
+    height: 34rem;
+    width: 21rem;
+    border-radius: 30px;
+    background-color: white;
+  }
+
+  
+  

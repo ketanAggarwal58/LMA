@@ -30,7 +30,7 @@ class quizData(models.Model):
     quizSubject = models.CharField(max_length=100)
 
 
-class quizSocre(models.Model):
+class quizScore(models.Model):
     quizName = models.CharField(max_length=256)
     userEmail = models.CharField(max_length=256)
     quizScore = models.IntegerField()

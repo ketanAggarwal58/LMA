@@ -1,8 +1,19 @@
+import React, {useState, useEffect} from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { DataGrid } from "@mui/x-data-grid";
 import "./user.css";
+import url from '../../constants'
 
 const UserScreen = () => {
+
+  const [quizUser, setQuizUser] = useState([])
+
+  useEffect(
+    () => {
+      fetch(url+"quizuser").then((data) => data.json()).then((data) => setQuizUser(data))
+    },[]
+  )
+
   return (
     <div className="user">
       <div className="userButton">
@@ -14,62 +25,47 @@ const UserScreen = () => {
         />
         UserName
       </div>
-      <span>All Quizes</span>
+      <span>All Users</span>
       <div style={{ height: 500, width: "100%" }}>
         <div style={{ display: "flex", height: "100%" }}>
           <div style={{ flexGrow: 4 }}>
             <DataGrid
               columns={[
                 {
-                  field: "Id",
+                  field: "id",
                   width: 100,
                   maxWidth: 200,
                   align: "center",
                   headerAlign: "center",
                 },
                 {
-                  field: "First Name",
+                  field: "firstName",
                   width: 150,
                   align: "center",
                   headerAlign: "center",
                 },
                 {
-                  field: "Last Name",
+                  field: "lastName",
                   width: 150,
                   align: "center",
                   headerAlign: "center",
                 },
                 {
-                  field: "Email",
+                  field: "email",
                   width: 270,
                   align: "center",
                   headerAlign: "center",
                 },
                 {
-                  field: "Phone",
+                  field: "phone",
                   width: 150,
                   align: "center",
                   headerAlign: "center",
                 },
               ]}
-              rows={[
-                {
-                  id: 1,
-                  Id: 1,
-                  "First Name": "Ketan",
-                  "Last Name": "Aggarwal",
-                  "Email": "ketanaggarwal58@gmail.com",
-                  "Phone": "+91"+ " " +"8570842070",
-                },
-                {
-                  id: 2,
-                  Id: 2,
-                  "First Name": "Ketan",
-                  "Last Name": "Aggarwal",
-                  "Email": "ketanaggarwal58@gmail.com",
-                  "Phone": "+91"+ " " +"8570842070",
-                },
-              ]}
+              rows={
+                quizUser
+              }
             />
           </div>
         </div>

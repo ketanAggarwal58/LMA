@@ -1,8 +1,19 @@
+import React, {useState, useEffect} from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { DataGrid } from "@mui/x-data-grid";
+import url  from "../../constants";
 import "./home.css";
 
 const HomeScreen = () => {
+
+  const [quizData, setQuizData] = useState([])
+
+  useEffect(
+    () => {
+      fetch(url+"quizdata").then((data) => data.json()).then((data) => setQuizData(data))
+    },[]
+  )
+
   return (
     <div className="home">
       <div className="userButton">
@@ -21,33 +32,26 @@ const HomeScreen = () => {
             <DataGrid
               columns={[
                 {
-                  field: "Id",
+                  field: "id",
                   width: 200,
                   maxWidth: 200,
                   align: "center",
                   headerAlign: "center",
                 },
                 {
-                  field: "Quiz Name",
+                  field: "quizName",
                   width: 200,
                   align: "center",
                   headerAlign: "center",
                 },
                 {
-                  field: "Quiz Max Score",
+                  field: "quizMaxScore",
                   width: 200,
                   align: "center",
                   headerAlign: "center",
                 },
               ]}
-              rows={[
-                {
-                  id: 1,
-                  Id: 1,
-                  "Quiz Name": "@MUI",
-                  "Quiz Max Score": 20,
-                },
-              ]}
+              rows={quizData}
             />
           </div>
         </div>

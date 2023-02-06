@@ -8,21 +8,21 @@ export const SideBarData = [
   {
     icon: HomeOutlinedIcon,
     heading: "All Quizes",
+    to: "/"
   },
-  // {
-  //     icon: DescriptionOutlinedIcon,
-  //     heading: "Orders"
-  // },
   {
     icon: PeopleOutlinedIcon,
     heading: "Users",
+    to: "/users"
   },
   {
     icon: Inventory2OutlinedIcon,
     heading: "New Quiz",
+    to: "add/quiz"
   },
   {
     icon: AnalyticsOutlinedIcon,
     heading: "Quiz Scores",
+    to: "quiz/score"
   },
 ];
