@@ -1,0 +1,10 @@
+.home {
+    padding-top: 4rem;
+  }
+  
+  .userButton {
+    display: flex;
+    align-items: center;
+    padding-bottom: 4rem;
+  }
+  

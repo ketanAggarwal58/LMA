@@ -6,6 +6,16 @@ import "./home.css";
 
 const HomeScreen = () => {
 
+  function generateRandom() {
+    var length = 8,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+  }
+
   const [quizData, setQuizData] = useState([])
 
   useEffect(
@@ -32,26 +42,20 @@ const HomeScreen = () => {
             <DataGrid
               columns={[
                 {
-                  field: "id",
-                  width: 200,
-                  maxWidth: 200,
-                  align: "center",
-                  headerAlign: "center",
-                },
-                {
                   field: "quizName",
-                  width: 200,
+                  width: 300,
                   align: "center",
                   headerAlign: "center",
                 },
                 {
                   field: "quizMaxScore",
-                  width: 200,
+                  width: 300,
                   align: "center",
                   headerAlign: "center",
                 },
               ]}
               rows={quizData}
+              getRowId={(row: any) =>  generateRandom()}
             />
           </div>
         </div>

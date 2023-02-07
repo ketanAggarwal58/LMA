@@ -1,6 +1,6 @@
 import "./sidebar.css";
 import { useState } from "react";
-import { SideBarData } from "../../data/data";
+import { SideBarData } from "../../../data/data";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import {Link, Route, Routes} from "react-router-dom";
 import { color } from "@mui/system";
