@@ -1,39 +1,44 @@
-import {useState} from 'react';
+import {ChangeEvent, useState} from 'react';
 import axios from 'axios';
 import {Typography, Input, InputAdornment, Button, TextField} from '@mui/material/';
 import { Quiz, AccountCircle } from "@mui/icons-material/";
 import url from '../../../constants';
+import IAllQuizData from '../../../types/allQuiz';
 
 const NewQuizScreen = () => {
 
-    const [quizName, setQuizName] = useState('')
-    const [quizQuestion, setQuizQuestion] = useState('')
-    const [quizAnswer1, setQuizAnswer1] = useState('')
-    const [quizAnswer2, setQuizAnswer2] = useState('')
-    const [quizAnswer3, setQuizAnswer3] = useState('')
-    const [quizAnswer4, setQuizAnswer4] = useState('')
-    const [correctAnswer, setCorrectAnswer] = useState('')
-    const [questionScore , setQuestionScore] = useState('')
+    const initialQuizState = {
+        id: null,
+        quizName: "",
+        quizQuestion: "",
+        quizAnswer1: "",
+        quizAnswer2: "",
+        quizAnswer3: "",
+        quizAnswer4: "",
+        correctAnswer: "",
+        questionScore: ""
+    }
 
-    const postData = (e:any) => {
-        e.preventDefault();
-    
-        axios.post(url+"quiz-question", {
-          quizName,
-          quizQuestion,
-          quizAnswer1,
-          quizAnswer2,
-          quizAnswer3,
-          quizAnswer4,
-          correctAnswer,
-          questionScore
-          
-        }).then(res => {
-          console.log("posting Data", res)
-          if(res.status == 200){
-            alert('Added Successfully')
-          }
-        }).catch(error => console.log("Error: "+error))
+    const [quiz, setQuiz] = useState<IAllQuizData>(initialQuizState);
+
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const {name , value} = event.target;
+        setQuiz({...quiz, [name]: value});
+    };
+
+    const saveQuizQuestion = () => {
+        var data = {
+            quizName: quiz.quizName,
+            quizQuestion: quiz.quizQuestion,
+            quizAnswer1: quiz.quizAnswer1,
+            quizAnswer2: quiz.quizAnswer2,
+            quizAnswer3: quiz.quizAnswer3,
+            quizAnswer4: quiz.quizAnswer4,
+            correctAnswer: quiz.correctAnswer,
+            questionScore: quiz.questionScore
+        }
+
+        console.log(data);
     }
 
     return (
@@ -140,7 +145,8 @@ const NewQuizScreen = () => {
                     marginTop: 4,
                     marginLeft: 9,
                 }}
-                onChange={(e) => setQuizName(e.target.value)}
+                onChange={handleInputChange}
+                value={quiz.quizName}
                 placeholder="Quiz Name"
                 id="input-user"
                 startAdornment={
@@ -154,7 +160,8 @@ const NewQuizScreen = () => {
                     marginTop: 4,
                     marginLeft: 9,
                 }}
-                onChange={(e) => setQuizQuestion(e.target.value)}
+                onChange={handleInputChange}
+                value={quiz.quizQuestion}
                 placeholder="Quiz Question"
                 id="input-user"
                 startAdornment={
@@ -169,7 +176,8 @@ const NewQuizScreen = () => {
                     marginTop: 4,
                     marginLeft: 9,
                 }}
-                onChange={(e) => setQuizAnswer1(e.target.value)}
+                onChange={handleInputChange}
+                value={quiz.quizAnswer1}
                 placeholder="Answer 1"
                 id="input-user"
                 startAdornment={
@@ -183,7 +191,8 @@ const NewQuizScreen = () => {
                     marginTop: 4,
                     marginLeft: 9,
                 }}
-                onChange={(e) => setQuizAnswer2(e.target.value)}
+                onChange={handleInputChange}
+                value={quiz.quizAnswer2}
                 placeholder="Answer 2"
                 id="input-user"
                 startAdornment={
@@ -197,7 +206,8 @@ const NewQuizScreen = () => {
                     marginTop: 4,
                     marginLeft: 9,
                 }}
-                onChange={(e) => setQuizAnswer3(e.target.value)}
+                onChange={handleInputChange}
+                value={quiz.quizAnswer3}
                 placeholder="Answer 3"
                 id="input-user"
                 startAdornment={
@@ -211,7 +221,8 @@ const NewQuizScreen = () => {
                     marginTop: 4,
                     marginLeft: 9,
                 }}
-                onChange={(e) => setQuizAnswer4(e.target.value)}
+                onChange={handleInputChange}
+                value={quiz.quizAnswer4}
                 placeholder="Answer 4"
                 id="input-user"
                 startAdornment={
@@ -226,7 +237,8 @@ const NewQuizScreen = () => {
                     marginTop: 4,
                     marginLeft: 9,
                 }}
-                onChange={(e) => setCorrectAnswer(e.target.value)}
+                onChange={handleInputChange}
+                value={quiz.correctAnswer}
                 placeholder="Correct Answer"
                 id="input-user"
                 startAdornment={
@@ -239,7 +251,8 @@ const NewQuizScreen = () => {
                 id="filled-number"
                 label="Question Score"
                 type="number"
-                onChange={(e) => setQuestionScore(e.target.value)}
+                onChange={handleInputChange}
+                value={quiz.questionScore}
                 sx={{marginTop: 3.5, marginLeft: 8}}
                 InputLabelProps={{
                     shrink: true,
@@ -255,7 +268,7 @@ const NewQuizScreen = () => {
                     marginLeft: 17,
                 }}
                 onClick={() => {
-                    // postData();
+                    saveQuizQuestion();
                 }}
                 >
                 Save
